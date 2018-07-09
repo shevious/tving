@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	<!-- Labels -->
+	<string id="30001">시청불가</string>
+	<string id="30002">무료</string>
+	<string id="30003">이전 페이지</string>
+	<string id="30004">다음 페이지</string>
+	<string id="30005">미리보기 시청 중</string>
+	<string id="30006">티빙 토큰</string>
+	<!-- Settings labels -->
+	<string id="30100">아이디</string>
+	<string id="30101">암호</string>
+	<string id="30102">로그인 타입</string>
+	<string id="30103">로그인 정보 저장 (다른 ID로 로그인을 원할 경우 체크해제)</string>
+	<string id="30104">자동 스트림 화질</string>
+	<string id="30105">수동으로 스트림 화질 선택</string>
+	<string id="30106">CJONE</string>
+	<string id="30107">TVING</string>
+	<string id="30108">FHD</string>
+	<string id="30109">HD</string>
+	<string id="30110">SD</string>
+	<!-- Warning -->
+	<string id="30201">저장된 로그인 정보가 없습니다.</string>
+	<string id="30202">지금 설정하겠습니까?</string>
+</strings>

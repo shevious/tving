@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<setting id="token" type="text" label="30006" default="" />
+	<setting type="sep"/>
+	<setting id="selected_quality" type="enum" label="30104" lvalues="30108|30109|30110" />
+	<setting id="manual_quality" type="bool" label="30105" default="false" />
+</settings>

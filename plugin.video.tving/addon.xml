@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.tving" name="TVING" version="0.3.0" provider-name="soju6jan">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="kodi.py">
+    	<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">TVING</summary>
+		<summary lang="kr">TVING</summary>
+		<description lang="en">TVING</description>
+		<description lang="kr">TVING</description>
+		<language></language>
+		<platform>all</platform>
+	</extension>
+</addon>
