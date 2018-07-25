@@ -26,7 +26,7 @@ MENU_LIST = [
 	'VOD:웹드라마 :&free=all&multiCategoryCode=PCWD&lastFrequency=y']
 VOD_GENRE = ['최신:&order=broadDate', '인기:&order=viewDay']
 
-VERSION = '0.3.0'
+VERSION = '0.3.1'
 
 ######################################## 
 # KODI & PLEX
@@ -89,7 +89,7 @@ PROXY_URL = 'http://soju6jan.synology.me/tving/tving.php?c=%s&q=%s&l=%s'
 def GetBroadURL(code, quality ):
 	try:
 		#login2 = login['t'].split('=')[1] if login is not None and 't' in login else ''
-		login2 = GetSetting('token')
+		login2 = urllib.unquote(GetSetting('token')).decode('utf8')
 		url =  PROXY_URL % (code, quality, login2)
 		request = urllib2.Request(url)
 		response = urllib2.urlopen(request)
