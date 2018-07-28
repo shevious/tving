@@ -10,23 +10,23 @@ sys.path.append(os.path.join( xbmc.translatePath( __addon__.getAddonInfo('path')
 from tving import *
 
 def Main():
-	#login_type = 'CJONE'
-	#if __addon__.getSetting('login_type') == 1: login_type = 'TVING'
-	#message = DoStartLoginCheck(__addon__.getSetting('id'), __addon__.getSetting('pw'), login_type, __addon__.getSetting('use_local_logindata'))
-	message = DoStartLoginCheckWithToken()
+	login_type = 'CJONE'
+	if __addon__.getSetting('login_type') == 1: login_type = 'TVING'
+	message = DoStartLoginCheck(__addon__.getSetting('id'), __addon__.getSetting('pw'), login_type, __addon__.getSetting('use_local_logindata'))
+	#message = DoStartLoginCheckWithToken()
 	addDir('LIVE', None, None, True, 'Menu', 'LIVE', None, None)
 	addDir('다시보기', None, None, True, 'Menu', 'VOD', None, None)
 	addDir('Watched', None, None, True, 'ContentList', 'WATCHED::', None, 1)
 	addDir(message, None, None, True, None, None, None, None)
 	
-	#if GetLoginStatus() is not 'SUCCESS':
-	#	dialog = xbmcgui.Dialog()
-	#	ret = dialog.yesno(__addon__.getAddonInfo('name'), __language__(30201).encode('utf8'), __language__(30202).encode('utf8'))
-	#	if ret == True:
-	#		__addon__.openSettings()
-	#		sys.exit()
-	#else: 
-	#	addon_noti( message )
+	if GetLoginStatus() is not 'SUCCESS':
+		dialog = xbmcgui.Dialog()
+		ret = dialog.yesno(__addon__.getAddonInfo('name'), __language__(30201).encode('utf8'), __language__(30202).encode('utf8'))
+		if ret == True:
+			__addon__.openSettings()
+			sys.exit()
+	else: 
+		addon_noti( message )
 	xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 

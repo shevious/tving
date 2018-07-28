@@ -1,8 +1,29 @@
 [
 	{
-		"id": "token",
-		"label": "티빙 토큰",
+		"id": "id",
+		"label": "TVING ID",
 		"type": "text",
 		"default": ""
+	},
+	{
+		"id": "pw",
+		"label": "TVING PW",
+		"type": "text",
+		"option":   "hidden",
+		"default": ""
+	},
+	{
+		"id": "login_type",
+		"type": "enum",
+		"label": "로그인 타입 (CJ ONE 통합 아이디 & TVING ID / 이메일 ID)",
+		"values": ["CJONE", "TVING"],
+		"default": "CJONE"
+	},
+	{
+		"id": "use_local_logindata",
+		"label": "로그인 정보 저장 (타 ID로 로그인을 원할 경우 체크해제)",
+		"type": "bool",
+		"option": "True",
+		"default": "True"
 	}
 ]

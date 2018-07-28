@@ -26,12 +26,13 @@ MENU_LIST = [
 	'VOD:웹드라마 :&free=all&multiCategoryCode=PCWD&lastFrequency=y']
 VOD_GENRE = ['최신:&order=broadDate', '인기:&order=viewDay']
 
-VERSION = '0.3.1'
+VERSION = '0.3.2'
 
 ######################################## 
 # KODI & PLEX
 ######################################## 
 import os
+LOGINDATA = ''
 try:
 	import xbmc, xbmcaddon
 	profile = xbmc.translatePath(xbmcaddon.Addon().getAddonInfo('profile'))
@@ -41,8 +42,9 @@ except:
 	pass
 
 try:
-	LOCAL_PROGRAM_LIST = os.path.join( os.getcwd(), 'programlist.txt')
-	LOGINDATA = os.path.join( os.getcwd(), 'login.dat')
+	if LOGINDATA is '':
+		LOCAL_PROGRAM_LIST = os.path.join( os.getcwd(), 'programlist.txt')
+		LOGINDATA = os.path.join( os.getcwd(), 'login.dat')
 except:
 	pass
 
@@ -84,17 +86,19 @@ def GetSetting(type):
 # REAL URL
 ######################################## 
 import urllib2
-PROXY_URL = 'http://soju6jan.synology.me/tving/tving.php?c=%s&q=%s&l=%s'
+PROXY_URL = 'http://soju6jan.iptime.org/tving/tving.php?c=%s&q=%s&l=%s'
 
 def GetBroadURL(code, quality ):
 	try:
-		#login2 = login['t'].split('=')[1] if login is not None and 't' in login else ''
-		login2 = urllib.unquote(GetSetting('token')).decode('utf8')
+		login = GetLoginData()
+		login2 = login['t'].split('=')[1] if login is not None and 't' in login else ''
+		#login2 = urllib.unquote(GetSetting('token')).decode('utf8')
 		url =  PROXY_URL % (code, quality, login2)
 		request = urllib2.Request(url)
 		response = urllib2.urlopen(request)
 		return response.read().strip()
 	except Exception as e:
+		LOG(e)
 		LOG('GetBroadURL exception!!!')
 	return
 
