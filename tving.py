@@ -4,6 +4,7 @@ import os
 import json
 import re
 import pickle
+import ssl
 from io import open
 
 
@@ -172,7 +173,7 @@ def DoLogin(user_id, user_pw, type ):
 		
 		postdata = urllib.urlencode( params )
 		request = urllib2.Request(url, postdata)
-		response = urllib2.urlopen(request)
+		response = urllib2.urlopen(request, context=ssl.SSLContext(ssl.PROTOCOL_TLSv1))
 		cookie = response.info().getheader('Set-Cookie')
 		for c in cookie.split(','):
 			c = c.strip()
