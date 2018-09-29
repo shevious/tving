@@ -2,8 +2,12 @@
 
 티빙 KODI / PLEX 플러그인이다.
 
-블로그에서 먼저 배포. 설명 참조
-https://blog.naver.com/cybersol/221198625272
+~~블로그에서 먼저 배포. 설명 참조~~
+~~https://blog.naver.com/cybersol/221198625272~~
+
+[KODI용 ZIP](https://github.com/soju6jan/soju6jan.github.io/tree/master/kodi_plugin)
+
+문의사항은 ISSUE에 로그파일을 같이 올려주세요
 
 ----
 #### 폴더구조
@@ -30,6 +34,9 @@ https://blog.naver.com/cybersol/221198625272
 
 ----
 #### ChangeLog
+##### 0.4.0 (20180929)
+- 로그인 정보를 저장할 수 없는 OS가 있는 것 같으며 그럴 경우 URL을 가져오기전 매번 로그인.
+
 ##### 0.3.3 (20180910)
 SSL관련 로그인 안되는 문제 수정
 

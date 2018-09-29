@@ -89,7 +89,9 @@ def PlayVideo( p ):
 	if quality is None: return
 
 	code = p['param']
-	url = GetURL(code, QUALITYS[quality])
+	login_type = 'CJONE'
+	if __addon__.getSetting('login_type') == 1: login_type = 'TVING'
+	url = GetURL(code, QUALITYS[quality],__addon__.getSetting('id'), __addon__.getSetting('pw'), login_type)
 	if url is None:
 		addon_noti( __language__(30001).encode('utf8') )
 		return

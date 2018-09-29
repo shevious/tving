@@ -27,7 +27,7 @@ MENU_LIST = [
 	'VOD:웹드라마 :&free=all&multiCategoryCode=PCWD&lastFrequency=y']
 VOD_GENRE = ['최신:&order=broadDate', '인기:&order=viewDay']
 
-VERSION = '0.3.2'
+VERSION = '0.4.0'
 
 ######################################## 
 # KODI & PLEX
@@ -89,9 +89,11 @@ def GetSetting(type):
 import urllib2
 PROXY_URL = 'http://soju6jan.iptime.org/tving/tving.php?c=%s&q=%s&l=%s'
 
-def GetBroadURL(code, quality ):
+def GetBroadURL(code, quality, id, pw, login_type):
 	try:
 		login = GetLoginData()
+		if len(login) == 0:
+			login = GetLoginData2( id, pw, login_type)
 		login2 = login['t'].split('=')[1] if login is not None and 't' in login else ''
 		#login2 = urllib.unquote(GetSetting('token')).decode('utf8')
 		url =  PROXY_URL % (code, quality, login2)
@@ -250,8 +252,8 @@ def GetList( type, param, page ):
 		result = []
 	return has_more, result
 
-def GetURL(code, quality ):
-	return GetBroadURL(code, quality)
+def GetURL(code, quality, id, pw, login_type):
+	return GetBroadURL(code, quality, id, pw, login_type)
 
 def LoadWatchedList():
 	try:
@@ -294,3 +296,29 @@ def GetLoginData():
 	return login
 
 
+def GetLoginData2(user_id, user_pw, type ):
+	isLogin = False
+	try:
+		loginData = {}
+		url = 'https://user.tving.com/user/doLogin.tving'
+		if type == 'CJONE': loginType = '10'
+		else: loginType = '20'
+		params = { 'userId' : user_id,
+			   'password' : user_pw,
+			   'loginType' : loginType }
+		
+		postdata = urllib.urlencode( params )
+		request = urllib2.Request(url, postdata)
+		response = urllib2.urlopen(request, context=ssl.SSLContext(ssl.PROTOCOL_TLSv1))
+		cookie = response.info().getheader('Set-Cookie')
+		for c in cookie.split(','):
+			c = c.strip()
+			if c.startswith('cs'): 
+				loginData['p'] = c.split('=')[1].split(';')[0].replace('%3D', '=').replace('%3B', '&')
+			if c.startswith('_tving_token'):
+				loginData['t'] = c.split(';')[0]
+		return loginData
+	except Exception as e:
+		LOG('<<<Exception>>> GetLoginData2: %s' % e)
+		credential = 'none'
+	return []

@@ -9,7 +9,6 @@
 		"id": "pw",
 		"label": "TVING PW",
 		"type": "text",
-		"option":   "hidden",
 		"default": ""
 	},
 	{

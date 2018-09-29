@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
 	<setting id="id" type="text" label="30100" default="" />
-	<setting id="pw" type="text" option="hidden" label="30101" default="" />
+	<setting id="pw" type="text" label="30101" default="" />
 	<setting id="login_type" type="enum" label="30102" lvalues="30106|30107" />
 	<setting id="use_local_logindata" type="bool" label="30103" default="true" />
 	<setting type="sep"/>

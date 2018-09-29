@@ -17,8 +17,8 @@ def MainMenu():
 		oc.add(DirectoryObject(key = Callback(Menu, title=unicode('LIVE'), type='LIVE'), title = unicode('LIVE')))
 		oc.add(DirectoryObject(key = Callback(Menu, title=unicode('다시보기'), type='VOD'), title = unicode('다시보기')))
 		oc.add(DirectoryObject(key = Callback(ContentList,  type='WATCHED', title=unicode('Watched'), param=''), title = unicode('Watched')))
-		#message = DoStartLoginCheck(Prefs['id'], Prefs['pw'], Prefs['login_type'],Prefs['use_local_logindata'])
-		message = DoStartLoginCheckWithToken()
+		message = DoStartLoginCheck(Prefs['id'], Prefs['pw'], Prefs['login_type'])
+		#message = DoStartLoginCheckWithToken()
 		oc.add(DirectoryObject(key = Callback(Label, message=message), title = unicode(message)))
 	except Exception as e:
 		Log('<<<Exception>>> MainMenu: %s' % e)
@@ -117,7 +117,7 @@ def Quality(title, type, code, summary, thumb, save_code, save_title, save_image
 	try:
 
 		for quality in QUALITYS_STRING:
-			url = GetURL(code, QUALITYS[quality])
+			url = GetURL(code, QUALITYS[quality],Prefs['id'], Prefs['pw'], Prefs['login_type'])
 			title2 = title + ' [' + quality + ']'
 			if url is not None:
 				if url.endswith('PREVIEW'): title2 = '[미리보기] ' + title2
