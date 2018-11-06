@@ -17,7 +17,7 @@ def MainMenu():
 		oc.add(DirectoryObject(key = Callback(Menu, title=unicode('LIVE'), type='LIVE'), title = unicode('LIVE')))
 		oc.add(DirectoryObject(key = Callback(Menu, title=unicode('다시보기'), type='VOD'), title = unicode('다시보기')))
 		oc.add(DirectoryObject(key = Callback(ContentList,  type='WATCHED', title=unicode('Watched'), param=''), title = unicode('Watched')))
-		message = DoStartLoginCheck(Prefs['id'], Prefs['pw'], Prefs['login_type'])
+		message = DoStartLoginCheck(Prefs['id'], Prefs['pw'], Prefs['login_type'], Prefs['use_local_logindata'])
 		#message = DoStartLoginCheckWithToken()
 		oc.add(DirectoryObject(key = Callback(Label, message=message), title = unicode(message)))
 	except Exception as e:
